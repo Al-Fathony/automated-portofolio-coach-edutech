@@ -1,36 +1,52 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const { DataTypes } = require("sequelize");
+const sequelize = require("../config/database");
 
-const Portfolio = sequelize.define('Portfolio', {
+const Portfolio = sequelize.define(
+  "Portfolio",
+  {
     id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
 
     userId: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
 
     generatedTitle: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
     },
 
     summary: {
-        type: DataTypes.TEXT
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
 
     skillsList: {
-        type: DataTypes.TEXT
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
 
     projectHighlights: {
-        type: DataTypes.TEXT
-    }
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
 
-}, {
-    timestamps: true
-});
+    // ==========================
+    // AI Analysis
+    // ==========================
+
+    analysis: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 module.exports = Portfolio;

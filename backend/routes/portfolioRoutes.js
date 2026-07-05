@@ -1,22 +1,24 @@
-const express = require('express');
+const express = require("express");
 
 const router = express.Router();
 
-const portfolioController =
-require('../controllers/portfolioController');
+const portfolioController = require("../controllers/portfolioController");
 
+// Generate
 router.post(
-  '/generate/:userId',
+  "/generate/:userId",
   portfolioController.generatePortfolio
 );
 
+// Portfolio berdasarkan user
 router.get(
-  '/',
+  "/user/:userId",
   portfolioController.getAllPortfolio
 );
 
+// Detail
 router.get(
-  '/:id',
+  "/:id",
   portfolioController.getPortfolioById
 );
 

@@ -1,127 +1,208 @@
-const Project = require('../models/Project');
+const Project = require("../models/Project");
 
-
+// ==========================
 // CREATE PROJECT
+// ==========================
+
 exports.createProject = async (req, res) => {
+
   try {
 
-    const project = await Project.create(req.body);
+    const project = await Project.create({
 
-    res.status(201).json({
-      message: 'Project berhasil ditambahkan',
-      data: project
+      userId: req.body.userId,
+      projectName: req.body.projectName,
+      projectUrl: req.body.projectUrl,
+      description: req.body.description,
+      score: req.body.score
+
     });
 
-  } catch (error) {
+    res.status(201).json({
 
-    res.status(500).json({
-      message: error.message
+      message: "Project berhasil ditambahkan",
+
+      data: project
+
     });
 
   }
+
+  catch (error) {
+
+    res.status(500).json({
+
+      message: error.message
+
+    });
+
+  }
+
 };
 
+// ==========================
+// GET PROJECT BERDASARKAN USER
+// ==========================
 
-// GET ALL PROJECT
 exports.getProjects = async (req, res) => {
+
   try {
 
-    const projects = await Project.findAll();
+    const { userId } = req.params;
+
+    const projects = await Project.findAll({
+
+      where: {
+
+        userId
+
+      },
+
+      order: [["id", "DESC"]]
+
+    });
 
     res.status(200).json(projects);
 
-  } catch (error) {
+  }
+
+  catch (error) {
 
     res.status(500).json({
+
       message: error.message
+
     });
 
   }
+
 };
 
-
+// ==========================
 // GET PROJECT BY ID
+// ==========================
+
 exports.getProjectById = async (req, res) => {
+
   try {
 
-    const project = await Project.findByPk(
-      req.params.id
-    );
+    const project = await Project.findByPk(req.params.id);
 
     if (!project) {
+
       return res.status(404).json({
-        message: 'Project tidak ditemukan'
+
+        message: "Project tidak ditemukan"
+
       });
+
     }
 
     res.status(200).json(project);
 
-  } catch (error) {
+  }
+
+  catch (error) {
 
     res.status(500).json({
+
       message: error.message
+
     });
 
   }
+
 };
 
-
+// ==========================
 // UPDATE PROJECT
+// ==========================
+
 exports.updateProject = async (req, res) => {
+
   try {
 
-    const project = await Project.findByPk(
-      req.params.id
-    );
+    const project = await Project.findByPk(req.params.id);
 
     if (!project) {
+
       return res.status(404).json({
-        message: 'Project tidak ditemukan'
+
+        message: "Project tidak ditemukan"
+
       });
+
     }
 
-    await project.update(req.body);
+    await project.update({
 
-    res.status(200).json({
-      message: 'Project berhasil diupdate',
-      data: project
+      projectName: req.body.projectName,
+      projectUrl: req.body.projectUrl,
+      description: req.body.description,
+      score: req.body.score
+
     });
 
-  } catch (error) {
+    res.status(200).json({
 
-    res.status(500).json({
-      message: error.message
+      message: "Project berhasil diupdate",
+
+      data: project
+
     });
 
   }
+
+  catch (error) {
+
+    res.status(500).json({
+
+      message: error.message
+
+    });
+
+  }
+
 };
 
-
+// ==========================
 // DELETE PROJECT
+// ==========================
+
 exports.deleteProject = async (req, res) => {
+
   try {
 
-    const project = await Project.findByPk(
-      req.params.id
-    );
+    const project = await Project.findByPk(req.params.id);
 
     if (!project) {
+
       return res.status(404).json({
-        message: 'Project tidak ditemukan'
+
+        message: "Project tidak ditemukan"
+
       });
+
     }
 
     await project.destroy();
 
     res.status(200).json({
-      message: 'Project berhasil dihapus'
-    });
 
-  } catch (error) {
+      message: "Project berhasil dihapus"
 
-    res.status(500).json({
-      message: error.message
     });
 
   }
+
+  catch (error) {
+
+    res.status(500).json({
+
+      message: error.message
+
+    });
+
+  }
+
 };

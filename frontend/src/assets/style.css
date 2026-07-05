@@ -1,0 +1,191 @@
+/* ===========================
+   GLOBAL
+=========================== */
+
+:root{
+
+  --primary:#111827;
+  --secondary:#374151;
+  --background:#f3f4f6;
+  --surface:#ffffff;
+  --border:#d1d5db;
+
+  --success:#10b981;
+  --warning:#f59e0b;
+  --danger:#ef4444;
+
+  --text:#111827;
+  --text-light:#6b7280;
+
+}
+
+*{
+
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+
+}
+
+body{
+
+  background:var(--background);
+  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+  color:var(--text);
+
+}
+
+a{
+
+  text-decoration:none;
+
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.card{
+
+  border:none;
+  border-radius:16px;
+  background:var(--surface);
+  box-shadow:0 5px 18px rgba(0,0,0,.08);
+
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.btn{
+
+  border-radius:10px;
+  font-weight:600;
+
+}
+
+.btn-primary{
+
+  background:var(--primary);
+  border:none;
+
+}
+
+.btn-primary:hover{
+
+  background:#000;
+
+}
+
+.btn-success{
+
+  border:none;
+
+}
+
+.btn-danger{
+
+  border:none;
+
+}
+
+/* ===========================
+   INPUT
+=========================== */
+
+.form-control{
+
+  border-radius:10px;
+  padding:10px 15px;
+
+}
+
+.form-control:focus{
+
+  box-shadow:none;
+  border-color:#111827;
+
+}
+
+/* ===========================
+   TABLE
+=========================== */
+
+.table{
+
+  background:white;
+
+}
+
+.table thead{
+
+  background:#111827;
+  color:white;
+
+}
+
+.table th{
+
+  border:none;
+
+}
+
+.table td{
+
+  vertical-align:middle;
+
+}
+
+/* ===========================
+   BADGE
+=========================== */
+
+.badge{
+
+  border-radius:20px;
+  padding:8px 12px;
+
+}
+
+/* ===========================
+   MODAL
+=========================== */
+
+.modal-content{
+
+  border:none;
+  border-radius:16px;
+
+}
+
+/* ===========================
+   SCROLLBAR
+=========================== */
+
+::-webkit-scrollbar{
+
+  width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+  background:#bdbdbd;
+  border-radius:20px;
+
+}
+
+/* ===========================
+   TITLE
+=========================== */
+
+h1,
+h2,
+h3,
+h4,
+h5{
+
+  font-weight:700;
+
+}

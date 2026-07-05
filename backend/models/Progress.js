@@ -23,7 +23,7 @@ const Progress = sequelize.define('Progress', {
         allowNull: false
     },
 
-    score: {
+    progress: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
